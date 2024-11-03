@@ -1,8 +1,8 @@
 #ifndef QCPP_QVALS_HPP
 #define QCPP_QVALS_HPP
 
-#define IF_EQ(x, y) if (x == y
-#define ELIF_EQ(x, y) else if (x == y)
+#define IF_EQ(x, y) if (x == y) // if macro
+#define ELIF_EQ(x, y) else if (x == y) // else if macro
 
 #define NAMESPACE_QCPP_START namespace qcpp {
 #define NAMESPACE_QCPP_END }
