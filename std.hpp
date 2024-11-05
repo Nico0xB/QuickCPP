@@ -1,39 +1,52 @@
+/*
+QuickCPP Std Header
+(C) Nico0xB provided under MIT license
+See LICENSE.txt for details
+*/
+#ifndef QCPP_STD_HPP
+#define QCPP_STD_HPP
+
+#pragma once
+
 #include <iostream>
 #include <cstdio>
-#include "qvals.hpp"
+#include "macros.hpp"
 #include "types.hpp"
 
 #define STD_NEWLINE         0x0000
 #define STD_FLUSH           0x0001
 #define STD_ENDL            0x0002
 
-QUICKCPP_VARIABLE std::istream IN;
-QUICKCPP_VARIABLE std::ostream OUT;
-QUICKCPP_VARIABLE std::ostream ERR;
-QUICKCPP_VARIABLE std::ostream LOG;
+namespace stream {
+    QUICKCPP_VARIABLE ISTREAM in;
+    QUICKCPP_VARIABLE OSTREAM out;
+    QUICKCPP_VARIABLE OSTREAM err;
+    QUICKCPP_VARIABLE OSTREAM log;
 
-QUICKCPP_FUNCTION std::ostream& NEWLINE(std::ostream& ostr) {
-    ostr.put(ostr.widen('\n'));
-    return ostr;
-}
+    QUICKCPP_VARIABLE wISTREAM win;
+    QUICKCPP_VARIABLE wOSTREAM wout;
 
-QUICKCPP_FUNCTION std::ostream& FLUSH(std::ostream& ostr) {
-    ostr.flush();
-    return ostr;
-}
 
-QUICKCPP_FUNCTION std::ostream& ENDL(std::ostream& ostr) {
-    ostr.put(ostr.widen('\n'));
-    ostr.flush();
-    return ostr;
-}
+    QUICKCPP_FUNCTION OSTREAM &newline(OSTREAM &ostr) {
+        ostr.put(ostr.widen('\n'));
+        return ostr;
+    }
 
-QUICKCPP_FUNCTION void PrintA(qSTRING str, qFLAG flag = STD_ENDL) {
-    IF_EQ(flag, STD_NEWLINE) {
-        OUT << str << NEWLINE;
-    } ELIF_EQ(flag, STD_FLUSH) {
-        OUT << str << FLUSH;
-    } ELIF_EQ(flag, STD_ENDL) {
+    QUICKCPP_FUNCTION OSTREAM &flush(OSTREAM &ostr) {
+        ostr.flush();
+        return ostr;
+    }
 
+    QUICKCPP_FUNCTION OSTREAM &endl(OSTREAM &ostr) {
+        ostr.put(ostr.widen('\n'));
+        ostr.flush();
+        return ostr;
     }
 }
+
+typedef OSTREAM& (*manipulator) (OSTREAM &ostr);
+QUICKCPP_FUNCTION void PrintA(STRING str, manipulator end) {
+    stream::out << str << end;
+}
+
+#endif
