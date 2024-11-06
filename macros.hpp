@@ -1,6 +1,6 @@
 /*
 QuickCPP Macros Header
-(C) Nico0xB provided under MIT license
+(C)2024 Nico0xB. Provided under the MIT license
 See LICENSE.txt for details
 */
 
@@ -10,8 +10,10 @@ See LICENSE.txt for details
 #define IF_EQ(x, y) if (x == y) // if macro
 #define ELIF_EQ(x, y) else if (x == y) // else if macro
 
+#define CHAR_T template <class CharT>
+
 /* 
-Various Headers to group types in namespaces or classes if you want.
+Various Headers to group QuickCpp types in namespaces or classes if you want.
 Useful if you want to redefine types or make variables with that names
 
 DEFINE BEFORE INCLUDING like this:

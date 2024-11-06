@@ -1,8 +1,9 @@
 /*
 QuickCPP Std Header
-(C) Nico0xB provided under MIT license
+(C)2024 Nico0xB. Provided under MIT license
 See LICENSE.txt for details
 */
+
 #ifndef QCPP_STD_HPP
 #define QCPP_STD_HPP
 
@@ -26,27 +27,26 @@ namespace stream {
     QUICKCPP_VARIABLE wISTREAM win;
     QUICKCPP_VARIABLE wOSTREAM wout;
 
-
-    QUICKCPP_FUNCTION OSTREAM &newline(OSTREAM &ostr) {
+    CHAR_T
+    QUICKCPP_FUNCTION BASE_OSTREAM<CharT> &newline(BASE_OSTREAM<CharT> &ostr) {
         ostr.put(ostr.widen('\n'));
         return ostr;
     }
 
-    QUICKCPP_FUNCTION OSTREAM &flush(OSTREAM &ostr) {
+    CHAR_T
+    QUICKCPP_FUNCTION BASE_OSTREAM<CharT> &flush(BASE_OSTREAM<CharT> &ostr) {
         ostr.flush();
         return ostr;
     }
 
-    QUICKCPP_FUNCTION OSTREAM &endl(OSTREAM &ostr) {
+    CHAR_T
+    QUICKCPP_FUNCTION BASE_OSTREAM<CharT> &endl(BASE_OSTREAM<CharT> &ostr) {
         ostr.put(ostr.widen('\n'));
         ostr.flush();
         return ostr;
     }
 }
 
-typedef OSTREAM& (*manipulator) (OSTREAM &ostr);
-QUICKCPP_FUNCTION void PrintA(STRING str, manipulator end) {
-    stream::out << str << end;
-}
+// Print Here
 
 #endif

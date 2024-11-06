@@ -1,6 +1,6 @@
 /*
 QuickCPP Types Header
-(C) Nico0xB provided under MIT license
+(C)2024 Nico0xB. Provided under the MIT license
 See LICENSE.txt for details
 */
 
@@ -10,8 +10,8 @@ See LICENSE.txt for details
 #include "macros.hpp"
 #include <iostream>
 
+QCPP_TYPES_START // See macros.hpp
 
-QCPP_TYPES_START
 /*
 Unsigned Types
 */
@@ -27,23 +27,40 @@ Signed Types
   using i16 = short; // 16-bit integer. From -32,768 to 32,767
   using i32 = int; // 32-bit integer. From -2,147,483,648 to 2,147,483,647
   using i64 = long long; // 64-bit integer. From -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+  using INT = i32;
+
+/*
+Stream Types
+*/
+  CHAR_T
+  using BASE_OSTREAM = std::basic_ostream<CharT>;
+
+  CHAR_T
+  using BASE_ISTREAM = std::basic_istream<CharT>;
 
 /*
 String Types
 */
-  using STRING  = std::basic_string<char>; // Normal String
-  using WSTRING = std::basic_string<wchar_t>; // Wide String
 
-  using OSTREAM = std::ostream;
-  using ISTREAM = std::istream;
+  CHAR_T
+  using BASE_STRING = std::basic_string<CharT>;
 
-  using wOSTREAM = std::wostream;
-  using wISTREAM = std::wistream;
+  using STRING  = BASE_STRING<char>; // Normal String
+  using WSTRING = BASE_STRING<wchar_t>; // Wide String
+
+  using OSTREAM = BASE_OSTREAM<char>;
+  using ISTREAM = BASE_ISTREAM<char>;
+
+  using wOSTREAM = BASE_OSTREAM<wchar_t>;
+  using wISTREAM = BASE_ISTREAM<wchar_t>;
+
 /*
 Other Types
 */
-  using ESCAPE = char; // Type for escape sequences like \0, \x1b or \n
-  using FLAG = char; // Type for flags used in QuickCPP functions
-QCPP_TYPES_END
+  using ESCAPE = ui8; // Type for escape sequences like \0, \x1b or \n
+  using FLAG = ui8; // Type for flags used in QuickCPP functions
+
+
+QCPP_TYPES_END // See macros.hpp
 
 #endif // QCPP_TYPES_HPP
