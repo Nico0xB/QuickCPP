@@ -7,30 +7,17 @@ See LICENSE.txt for details
 #ifndef QCPP_MACROS_HPP
 #define QCPP_MACROS_HPP
 
+/*
+if macros
+*/
 #define IF_EQ(x, y) if (x == y) // if macro
 #define ELIF_EQ(x, y) else if (x == y) // else if macro
 
-#define CHAR_T template <class CharT>
-
-/* 
-Various Headers to group QuickCpp types in namespaces or classes if you want.
-Useful if you want to redefine types or make variables with that names
-
-DEFINE BEFORE INCLUDING like this:
-
-#define QCPP_TYPES_START namespace qTypes {
-#define QCPP_TYPES_END   }
-
-#include "./quickcpp/std.hpp"
+/*
+Template macros
 */
-
-#ifndef QCPP_TYPES_START
-#define QCPP_TYPES_START
-#endif
-
-#ifndef QCPP_TYPES_END
-#define QCPP_TYPES_END
-#endif
+#define TEMPLATE_CHAR_T template <class CharT>
+#define TEMPLATE_T template <class T>
 /*
 C/C++ Linkage specification macros
 */
