@@ -9,11 +9,12 @@ See LICENSE.txt for details
 
 #include <iostream>
 #include "int.hpp"
-
 /*
-Other Types
+Char Types
 */
-  using ESCAPE = ui8; // Type for escape sequences like \0, \x1b or \n
-  using FLAG = ui8; // Type for flags used in QuickCPP functions
+  using CHAR = char;
+  using wCHAR = wchar_t;
+  using ESCAPE = CHAR; // Type for escape sequences like \0, \x1b or \n
+  using FLAG = CHAR; // Type for flags used in QuickCPP functions
 
 #endif // QCPP_TYPES_HPP
